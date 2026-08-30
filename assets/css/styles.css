@@ -1,38 +1,39 @@
 /* ==========================================================================
    Show Your Worth Circles — stylesheet
-   Palette matches the live site's real design tokens exactly (light + dark):
-   crimson primary (hsl 348 83% 47%), coral/terracotta accent (hsl 12 70% 60%),
-   warm umber secondary surface (hsl 24 20% 25%), cream ground (hsl 30 33% 98%).
-   Two accents (crimson + coral) are used deliberately together, as the real
-   brand does, rather than a single flat accent.
+   Brand palette (exact): red #db3c3d / #f04143 / #f34a4c, navy #1d274d,
+   off-white #f4f4f2. Navy doubles as the body-text ink color and as the
+   dark "wine" surface band (hero, footer, contrast sections) — the same
+   navy reads as a deep accent against the light off-white ground, and as
+   a slightly-raised band against the near-black dark-mode ground. The red
+   trio forms a tonal ladder: base accent on paper, bright on hover/on-navy,
+   light as the top tier for hover-on-navy.
    ========================================================================== */
 
 /* ---------- tokens: light (default) ---------- */
 :root {
-  --ink: #2e241f;
-  --ink-soft: #5c4a3d;
-  --paper: #fbf8f4;
+  --ink: #1d274d;
+  --ink-soft: #6f7690;
+  --paper: #f4f4f2;
   --paper-raised: #ffffff;
-  --tint: #efebe7;
-  --wine: #4d3d33;
-  --wine-deep: #251d18;
-  --on-wine: #fbf8f4;
-  --crimson: #db143c;
-  --crimson-bright: #f05c79;
-  --coral: #e06e52;
-  --coral-strong: #c2431f;
-  --mauve: #8f7c6d;
-  --line: rgba(46, 36, 31, 0.14);
-  --line-on-wine: rgba(251, 248, 244, 0.2);
+  --tint: #e9eaec;
+  --wine: #1d274d;
+  --wine-deep: #0d1223;
+  --on-wine: #f4f4f2;
+  --crimson: #db3c3d;
+  --crimson-bright: #f04143;
+  --crimson-light: #f34a4c;
+  --mauve: #a3a8b8;
+  --line: rgba(29, 39, 77, 0.14);
+  --line-on-wine: rgba(244, 244, 242, 0.2);
 
-  --shadow-sm: 0 1px 2px rgba(46, 36, 31, 0.05), 0 1px 1px rgba(46, 36, 31, 0.04);
-  --shadow-md: 0 14px 34px -14px rgba(46, 36, 31, 0.22), 0 3px 8px -3px rgba(46, 36, 31, 0.1);
-  --shadow-wine: 0 30px 60px -22px rgba(15, 8, 5, 0.55);
+  --shadow-sm: 0 1px 2px rgba(29, 39, 77, 0.06), 0 1px 1px rgba(29, 39, 77, 0.04);
+  --shadow-md: 0 14px 34px -14px rgba(29, 39, 77, 0.24), 0 3px 8px -3px rgba(29, 39, 77, 0.12);
+  --shadow-wine: 0 30px 60px -22px rgba(5, 7, 15, 0.55);
 
-  --gradient-primary: linear-gradient(135deg, var(--crimson), var(--coral));
+  --gradient-primary: linear-gradient(135deg, var(--crimson), var(--crimson-bright));
   --gradient-hero:
-    radial-gradient(ellipse 70% 60% at 78% 28%, color-mix(in srgb, var(--crimson) 60%, transparent), transparent 68%),
-    radial-gradient(ellipse 55% 50% at 22% 92%, color-mix(in srgb, var(--coral) 40%, transparent), transparent 65%),
+    radial-gradient(ellipse 70% 60% at 78% 28%, color-mix(in srgb, var(--crimson) 55%, transparent), transparent 68%),
+    radial-gradient(ellipse 55% 50% at 22% 92%, color-mix(in srgb, var(--crimson-bright) 32%, transparent), transparent 65%),
     var(--wine-deep);
 
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
@@ -47,21 +48,20 @@
 /* ---------- tokens: dark (system) ---------- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ink: #fbf8f4;
-    --ink-soft: #c9beb2;
-    --paper: #251d18;
-    --paper-raised: #2d241f;
-    --tint: #352c27;
-    --wine: #2e1620;
-    --wine-deep: #150d0f;
-    --on-wine: #fbf8f4;
-    --crimson: #eb2d53;
-    --crimson-bright: #ff7a93;
-    --coral: #e8794f;
-    --coral-strong: #d94a26;
-    --mauve: #beb3a7;
-    --line: rgba(251, 248, 244, 0.14);
-    --line-on-wine: rgba(251, 248, 244, 0.16);
+    --ink: #f4f4f2;
+    --ink-soft: #b7bbc9;
+    --paper: #0b0f20;
+    --paper-raised: #141a33;
+    --tint: #10152a;
+    --wine: #1d274d;
+    --wine-deep: #05070f;
+    --on-wine: #f4f4f2;
+    --crimson: #db3c3d;
+    --crimson-bright: #f04143;
+    --crimson-light: #f34a4c;
+    --mauve: #868ba0;
+    --line: rgba(244, 244, 242, 0.14);
+    --line-on-wine: rgba(244, 244, 242, 0.16);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.24);
     --shadow-md: 0 14px 34px -14px rgba(0, 0, 0, 0.6), 0 3px 8px -3px rgba(0, 0, 0, 0.4);
@@ -71,21 +71,20 @@
 
 /* ---------- tokens: dark (explicit toggle) ---------- */
 :root[data-theme="dark"] {
-  --ink: #fbf8f4;
-  --ink-soft: #c9beb2;
-  --paper: #251d18;
-  --paper-raised: #2d241f;
-  --tint: #352c27;
-  --wine: #2e1620;
-  --wine-deep: #150d0f;
-  --on-wine: #fbf8f4;
-  --crimson: #eb2d53;
-  --crimson-bright: #ff7a93;
-  --coral: #e8794f;
-  --coral-strong: #d94a26;
-  --mauve: #beb3a7;
-  --line: rgba(251, 248, 244, 0.14);
-  --line-on-wine: rgba(251, 248, 244, 0.16);
+  --ink: #f4f4f2;
+  --ink-soft: #b7bbc9;
+  --paper: #0b0f20;
+  --paper-raised: #141a33;
+  --tint: #10152a;
+  --wine: #1d274d;
+  --wine-deep: #05070f;
+  --on-wine: #f4f4f2;
+  --crimson: #db3c3d;
+  --crimson-bright: #f04143;
+  --crimson-light: #f34a4c;
+  --mauve: #868ba0;
+  --line: rgba(244, 244, 242, 0.14);
+  --line-on-wine: rgba(244, 244, 242, 0.16);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.24);
   --shadow-md: 0 14px 34px -14px rgba(0, 0, 0, 0.6), 0 3px 8px -3px rgba(0, 0, 0, 0.4);
@@ -161,7 +160,7 @@ p { margin: 0; }
   color: var(--crimson);
   margin: 0 0 1rem;
 }
-.eyebrow-on-wine { color: var(--coral); }
+.eyebrow-on-wine { color: var(--crimson-bright); }
 
 .section-title {
   font-size: clamp(1.7rem, 1.15rem + 2vw, 2.6rem);
@@ -199,8 +198,8 @@ p { margin: 0; }
   padding-bottom: 2px;
   transition: color 0.2s ease;
 }
-.text-link:hover { color: var(--coral-strong); }
-.text-link.on-wine { color: var(--coral); }
+.text-link:hover { color: var(--ink); }
+.text-link.on-wine { color: var(--crimson-bright); }
 .text-link.on-wine:hover { color: var(--on-wine); }
 
 /* ---------- buttons ---------- */
@@ -262,7 +261,7 @@ p { margin: 0; }
 .brand-mark { color: var(--crimson); display: inline-flex; }
 .brand-word { display: flex; flex-direction: column; line-height: 1; }
 .brand-line1 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; }
-.brand-line2 { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.22em; color: var(--coral-strong); margin-top: 0.3rem; }
+.brand-line2 { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.22em; color: var(--crimson); margin-top: 0.3rem; }
 
 .primary-nav {
   display: flex;
@@ -385,7 +384,7 @@ p { margin: 0; }
   color: var(--on-wine);
 }
 .hero-sm .hero-title { font-size: clamp(2rem, 1.5rem + 2vw, 3.1rem); }
-.hero-title em { font-style: italic; color: var(--coral); }
+.hero-title em { font-style: italic; color: var(--crimson-light); }
 
 .hero-sub {
   margin-top: 1.6rem;
@@ -397,7 +396,7 @@ p { margin: 0; }
 .hero-kicker {
   margin-top: 1.3rem;
   font-weight: 600;
-  color: var(--coral);
+  color: var(--crimson-light);
   font-size: 1.05rem;
 }
 
@@ -415,7 +414,7 @@ p { margin: 0; }
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: var(--coral);
+  color: var(--crimson-light);
 }
 
 .hero-media {
@@ -478,7 +477,7 @@ p { margin: 0; }
   line-height: 1.1;
   padding: 0.2rem;
 }
-.stat-ring:nth-of-type(even) .stat-num { border-color: var(--coral); color: var(--coral-strong); }
+.stat-ring:nth-of-type(even) .stat-num { border-color: var(--ink); color: var(--ink); }
 .stat-label { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.4; }
 
 /* ---------- numbered list (benefits / steps) — background-agnostic ---------- */
@@ -504,10 +503,8 @@ p { margin: 0; }
   color: var(--crimson);
   padding-top: 0.3rem;
 }
-.index-list li:nth-child(even) .index-list-index { color: var(--coral-strong); }
 .section-wine .index-list li { border-color: var(--line-on-wine); }
-.section-wine .index-list-index { color: var(--coral); }
-.section-wine .index-list li:nth-child(even) .index-list-index { color: var(--crimson-bright); }
+.section-wine .index-list-index { color: var(--crimson-bright); }
 .index-list h3, .index-list h4 { font-size: 1.15rem; margin-bottom: 0.4rem; color: inherit; }
 .index-list p { color: currentColor; opacity: 0.78; max-width: 52ch; }
 
@@ -562,7 +559,7 @@ p { margin: 0; }
   color: var(--crimson);
   margin-bottom: 0.3rem;
 }
-.ring-node:nth-child(odd) .ring-node-kind { color: var(--coral-strong); }
+.ring-node:nth-child(odd) .ring-node-kind { color: var(--ink); }
 .ring-node-label { font-size: 0.85rem; font-weight: 600; }
 .ring-node.is-bookend .ring-node-label { color: var(--crimson); }
 
@@ -643,7 +640,7 @@ p { margin: 0; }
   font-size: 0.68rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--coral-strong);
+  color: var(--crimson);
 }
 .location-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gradient-primary); }
 .location-desc { margin-top: 0.6rem; font-size: 0.88rem; color: var(--ink-soft); }
@@ -745,7 +742,7 @@ p { margin: 0; }
   line-height: 1.55;
   color: var(--ink);
 }
-.section-wine .testimonial-full { background: color-mix(in srgb, var(--wine) 60%, var(--wine-deep) 40%); border-color: var(--line-on-wine); }
+.section-wine .testimonial-full { background: color-mix(in srgb, var(--wine) 55%, var(--wine-deep) 45%); border-color: var(--line-on-wine); }
 .section-wine .testimonial-full blockquote p { color: var(--on-wine); }
 .section-wine .testimonial-role { color: color-mix(in srgb, var(--on-wine) 78%, transparent); }
 
@@ -844,8 +841,8 @@ p { margin: 0; }
   border-bottom: 1px solid var(--line-on-wine);
 }
 .footer-grid .brand { color: var(--on-wine); }
-.footer-grid .brand-mark { color: var(--coral); }
-.footer-grid .brand-line2 { color: var(--coral); }
+.footer-grid .brand-mark { color: var(--crimson-light); }
+.footer-grid .brand-line2 { color: var(--crimson-light); }
 .footer-tagline {
   margin-top: 1rem;
   color: color-mix(in srgb, var(--on-wine) 78%, transparent);
@@ -858,7 +855,7 @@ p { margin: 0; }
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--coral);
+  color: var(--crimson-light);
   margin-bottom: 1rem;
 }
 .footer-nav, .footer-connect { display: flex; flex-direction: column; gap: 0.7rem; }
@@ -867,10 +864,10 @@ p { margin: 0; }
   color: color-mix(in srgb, var(--on-wine) 85%, transparent);
   font-size: 0.92rem;
 }
-.footer-nav a:hover, .footer-connect a:hover { color: var(--coral); }
+.footer-nav a:hover, .footer-connect a:hover { color: var(--crimson-light); }
 .footer-social { display: flex; gap: 1rem; margin-top: 0.3rem; }
 .footer-social a { display: inline-flex; color: color-mix(in srgb, var(--on-wine) 85%, transparent); }
-.footer-social a:hover { color: var(--coral); }
+.footer-social a:hover { color: var(--crimson-light); }
 
 .footer-bottom {
   padding: 1.6rem 0;
@@ -883,7 +880,7 @@ p { margin: 0; }
   justify-content: space-between;
 }
 .footer-bottom a { color: var(--mauve); text-decoration: none; }
-.footer-bottom a:hover { color: var(--coral); }
+.footer-bottom a:hover { color: var(--crimson-light); }
 
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
 
