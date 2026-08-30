@@ -19,27 +19,6 @@
     });
   }
 
-  // ---- FAQ accordion ----
-  document.querySelectorAll(".accordion-trigger").forEach(function (trigger) {
-    var panel = trigger.nextElementSibling;
-    if (!panel) return;
-
-    trigger.addEventListener("click", function () {
-      var isOpen = trigger.getAttribute("aria-expanded") === "true";
-
-      document.querySelectorAll(".accordion-trigger").forEach(function (other) {
-        if (other !== trigger) {
-          other.setAttribute("aria-expanded", "false");
-          var otherPanel = other.nextElementSibling;
-          if (otherPanel) otherPanel.style.maxHeight = "";
-        }
-      });
-
-      trigger.setAttribute("aria-expanded", String(!isOpen));
-      panel.style.maxHeight = isOpen ? "" : panel.scrollHeight + "px";
-    });
-  });
-
   // ---- scroll reveal ----
   var reveals = document.querySelectorAll(".reveal");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
