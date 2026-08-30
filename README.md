@@ -1,19 +1,15 @@
 # Show Your Worth Circles
 
-A 5-page marketing site for **Show Your Worth Circles** — a 10-session cohort
-program for women, built on Shelmina Abji's 8 intentional strategies from her
-book *Show Your Worth: 8 Intentional Strategies for Women to Emerge as
-Leaders at Work*, culminating in each participant's own Personal Success
-Plan (PSP).
+A single-page marketing site for **Show Your Worth Circles** — a transformative
+10-week cohort experience rooted in Shelmina Abji's 8 intentional strategies
+for career advancement and personal fulfillment, built toward each
+participant's own Personal Success Plan (PSP).
 
-This is a from-scratch redesign of [showyourworthcircles.com](https://www.showyourworthcircles.com/),
-rebuilt with real content pulled from the live site (its React/Vite bundle
-was read directly, since the page renders client-side) — real program facts,
-real team bios, real testimonials, real signup links. Nothing here is
-placeholder copy except where noted below.
+This is a from-scratch rebuild using the brand's exact colors, its real logo
+mark, the real 8 strategy names, and marketing copy supplied directly by the
+client (mission statement + a "Why Show Your Worth Circles" one-pager).
 
-Static site, no build step. Open `index.html` directly, or serve the folder
-with any static file server:
+Static site, no build step. Open `index.html` directly, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
@@ -23,83 +19,68 @@ python3 -m http.server 8000
 ## Structure
 
 ```
-index.html             Home — hero, why-join, what-you'll-gain, session
-                        structure (10-session ring diagram), ways-to-join teaser
-about.html              Mission, Shelmina Abji's bio, team/advisors/ambassadors
-testimonials.html       Full testimonials from Apurva Bhagali, Krishnapriya
-                        Gelli, and Anara Satkeeva
-join-us.html            Full "ways to join" (city-based / workplace) with real
-                        signup links, global locations, become-a-facilitator flow
-contact.html            Contact info + inquiry form (matches the live site's
-                        real inquiry types)
-assets/css/styles.css   Design tokens, layout, light/dark theme
-assets/js/main.js       Mobile nav, scroll-reveal, footer year
+index.html             Single-page site: hero, mission, what-sets-us-apart,
+                        the 8 strategies (radial diagram), the 10-week
+                        journey (timeline), who it's for, for organizations,
+                        the framework, apply form, footer
+assets/css/styles.css  Design tokens, layout, light/dark theme
+assets/js/main.js      Mobile nav, scroll-reveal, footer year
 ```
 
 ## Design
 
-- **Palette** — derived from the brand's real primary color
-  (`hsl(348 83% 47%)`, a crimson/rose): Ink (`#241017`), Paper (`#f6efe4`),
-  Wine (`#5c1a35`, mid/dark surface), Crimson accent (`#b3123f`), with a
-  brighter Crimson variant for text on the dark wine surface. Full
-  light/dark theme support via CSS custom properties.
-- **Type** — Fraunces (display/headings), Work Sans (body), IBM Plex Mono
-  (eyebrows, numerals, labels) — a deliberate upgrade over the live site's
-  default system-font/Tailwind look, while keeping its real brand color.
-- **The 10 Sessions** (`index.html#program`) is a radial ring diagram —
-  Kick-off, 8 workbook sessions, and a Wrap-up arranged around a center hub,
-  echoing the "Circles" name with something that's actually a real,
-  accurate sequence (not invented content).
+- **Palette (exact, as supplied)** — Red `#db3c3d` / `#f04143` / `#f34a4c`,
+  Navy `#1d274d`, Off-white `#f4f4f2`. Navy does double duty as the body-text
+  ink color and as the dark "band" surface (hero, footer, contrast sections):
+  it reads as a deep accent against the light ground, and as a raised panel
+  against the dark-mode near-black ground, so the same value works in both
+  themes.
+- **Type** — Oswald (bold condensed, echoes the logo mark's poster energy)
+  for headings, Work Sans for body copy, IBM Plex Mono for eyebrows/labels/
+  numerals, Caveat only for the small script "your" flourish in the
+  recreated logo badge.
+- **Logo badge** — The client's real logo is a red circle with "SHOW" /
+  "your WORTH" / "CIRCLES" stacked inside. That exact image file wasn't
+  available to save as an asset (it arrived as an inline chat image, not an
+  uploaded file), so it's **recreated in CSS/HTML** (`.badge` in
+  `styles.css`) matching the same colors, layout, and lockup — it scales
+  cleanly via CSS container queries from the 46px header mark up to the
+  ~280px hero mark. **If you want the literal original logo file used
+  instead of this recreation, attach it as a file upload (not a pasted
+  image) and it can be dropped in as a real asset.**
+- **The 8 Intentional Strategies** (`#strategies`) is a radial ring diagram —
+  the eight strategies orbit a center "Your Worth" hub, echoing the
+  "Circles" name. Collapses to a simple list under 760px.
+- **The 10-Week Journey** (`#journey`) is a horizontal timeline: Week 1
+  kick-off, Weeks 2–9 are the 8 strategies in order (one per week, per the
+  "structured workbooks... tied to that week's strategy" detail from the
+  client's one-pager), Week 10 wrap-up/PSP presentation.
 
-## Real content sourced from the live site
+## Content sourced directly from the client
 
-- Mission statement, hero copy, "Why Join a Circle?", "What You'll Gain"
-  (4 items), and Session Structure facts (10 sessions incl. kick-off +
-  8 workbooks + wrap-up; 7 participants per circle; alternating virtual/
-  in-person; trained facilitators) — from the Home page.
-- Shelmina Babai Abji's full bio, Dona Maria Jose's bio, advisors (Monica
-  Mora, Karuna Thomas, Chinara Satkeeva), and ambassadors (Meenu Agarwal,
-  Aashima Narula), with their real titles and LinkedIn links — from the
-  About page.
-- All 3 testimonials (Apurva Bhagali, Krishnapriya Gelli, Anara Satkeeva),
-  full text, real names/roles — from the Testimonials page.
-- Ways-to-join details (benefits, real ClickUp signup/request-info links),
-  the 5 active locations (San Francisco, Seattle, Dallas, Cape Town,
-  Bangalore), and the become-a-facilitator process + real "Apply to Lead"
-  link — from the Join Us page.
-- Contact info (email, phone, Seattle HQ, hours) and the real inquiry-type
-  options — from the Contact page.
-- Images are hot-linked to the org's own asset host
-  (`horizons-cdn.hostinger.com`) — the same URLs the live site already
-  serves publicly. This sandbox's network policy couldn't reach that host to
-  verify them directly, so they're unverified from here, but they're the
-  live site's own working image URLs. If any come back broken once
-  deployed, re-save those specific images from the live site and swap in
-  local paths.
+- Mission paragraph — used verbatim (hero + `#mission`).
+- The 8 intentional strategies and their order — used exactly as given.
+- "What sets SYW Circles apart" (7 points) and "What can your organization
+  expect?" (6 points) — from the supplied one-pager, lightly trimmed for
+  length, not reworded in substance.
+- Brand colors — used exactly as given (see above).
 
-## ⚠️ Still placeholder / needs your input
+## ⚠️ Intentionally left out this round
 
-- **The 8 individual workbook/strategy titles** — the live site never names
-  them individually (only "8 themed workbooks based on Shelmina Abji's
-  book"), so the ring diagram labels sessions generically ("Workbook 1"–
-  "Workbook 8") rather than inventing chapter titles. If you have the real
-  chapter names, add them to the `.ring-node-label` text in `index.html`.
-- **Contact form** (`contact.html`) — static markup only, `action="#"`.
-  Needs a real handler (your backend, Formspree, Netlify Forms, etc.)
-  before launch. The live site posts to `localStorage` client-side, which
-  isn't a real backend either.
-- **Pricing** — the live site doesn't publish pricing anywhere; this
-  rebuild doesn't either. If the program has public pricing now, add it.
+Per the request to leave prior versions and build fresh from the materials
+supplied, this build does **not** carry over content from earlier
+iterations that wasn't part of this brief — team bios, testimonials, real
+contact details, program logistics (pricing, exact schedule, signup links).
+Add these back in whenever you're ready to supply them; ask and they can be
+restored (verified real ones were sourced from the live site in an earlier
+pass of this project, if that's useful as a starting point).
 
-Search for the word "placeholder" to find every remaining spot:
-
-```bash
-grep -rin "placeholder" *.html
-```
+**Apply form** (`#apply`) — static markup only, `action="#"`. Needs a real
+handler (your backend, Formspree, Netlify Forms, etc.) before launch.
 
 ## Browser support
 
-Modern evergreen browsers (uses `aspect-ratio`, `color-mix()`, CSS custom
-properties, `prefers-reduced-motion`, `IntersectionObserver`). No build
-tools, frameworks, or external JS dependencies — only Google Fonts is
-loaded from a CDN, plus hot-linked images from the org's existing asset host.
+Modern evergreen browsers (uses `aspect-ratio`, `color-mix()`, CSS
+container queries, CSS custom properties, `prefers-reduced-motion`,
+`IntersectionObserver`). No build tools, frameworks, or external JS
+dependencies — only Google Fonts is loaded from a CDN.
